@@ -1,0 +1,41 @@
+body {
+  background: white url("images/background.jpg");
+}
+
+.navbar {
+	border-radius: 0;
+}
+
+.navbar-brand {
+	font-family: 'Satisfy', cursive;
+}
+
+.album-tile {
+}
+
+.image-tile {
+	padding: 5px;
+	background: seagreen;
+}
+
+.image-tile img {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.tile-details {
+	font-size: 20px;
+	font-family: 'Indie Flower', cursive;
+	text-align: justify;
+}
+
+.tile-details a:hover{
+	text-decoration: none;
+	color: #000000;
+
+}
+
+.glyphicon-star.active {
+    color: #FDB230;
+}
