@@ -1,12 +1,16 @@
 from django.views import generic
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import authenticate, login
 from django.views.generic import View
 from django.urls import reverse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 from .models import Album, Song
 from .forms import UserForm
+from .serializers import AlbumSerializer, SongSerializer
 
 class IndexView(generic.ListView):
 	template_name = "music/index.html"
@@ -91,7 +95,26 @@ class UserFormView(View):
 					return redirect("music:index")
 
 		return render(request, self.template_name, {'form' : form})
-		
+
+
+#/albums/api
+class AlbumList(APIView):
+
+	def get(self, request):
+		albums = Album.objects.all()
+		serializer = AlbumSerializer(albums, many=True)
+		return Response(serializer.data)
+
+
+class SongList(APIView):
+
+	def get(self, request):
+		songs = Song.objects.all()
+		serializer = SongSerializer(songs, many=True)
+		return Response(serializer.data)
+
+#/song/api
+
 # class FavoriteUpdate(generic.ListView):
 #
 # 	def get_object(self, **kwargs):

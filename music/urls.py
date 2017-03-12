@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 
 
@@ -27,5 +28,15 @@ urlpatterns = [
     url(r'^(?P<album_id>[0-9]+)/favorite/$', views.album_favorite, name='album_favorite'),
 
 	# /music/<album_id>/<song_id/favorite
-    url(r'^(?P<album_id>[0-9]+)/(?P<song_id>[0-9]+)/favorite/$', views.song_favorite, name='song_favorite')
+    url(r'^(?P<album_id>[0-9]+)/(?P<song_id>[0-9]+)/favorite/$', views.song_favorite, name='song_favorite'),
+
+	# /music/album/api
+    url(r'^albums/api/$', views.AlbumList.as_view(), name='albums_api'),
+
+	# /music/songs/api
+	url(r'^songs/api/$', views.SongList.as_view(), name='songs_api')
+
 ]
+
+
+urlpatterns = format_suffix_patterns(urlpatterns)
