@@ -17,8 +17,11 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
+from music import views
 
 urlpatterns = [
+	url(r'^$', RedirectView.as_view(url="music/", permanent = False)),
     url(r'^admin/', admin.site.urls),
     url(r'^music/', include('music.urls')),
 ]
