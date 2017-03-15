@@ -7,7 +7,9 @@ app_name = 'music'
 
 urlpatterns = [
     # /music/
-    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^albums/$', views.IndexView.as_view(), name='index'),
+
+	url(r'^songs/$', views.SongsView.as_view(), name='songs'),
 
 
 	url(r'^register/$', views.UserFormView.as_view(), name='register'),

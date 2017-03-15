@@ -21,7 +21,7 @@ from django.views.generic.base import RedirectView
 from music import views
 
 urlpatterns = [
-	url(r'^$', RedirectView.as_view(url="music/", permanent = False)),
+	url(r'^$', RedirectView.as_view(url="music/albums", permanent = False)),
     url(r'^admin/', admin.site.urls),
     url(r'^music/', include('music.urls')),
 ]
