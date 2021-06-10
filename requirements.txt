@@ -1,5 +1,5 @@
 Cerberus==0.9.2
-Django==1.11.29
+Django==2.2.24
 Eve==0.7.2
 Events==0.2.2
 Flask==1.0
